@@ -1,0 +1,22 @@
+# Prior work
+
+Checked 2026-10-11. Verdicts: **close** means the same core idea with a different scope or mechanism, **partial** means one shared idea, **context** means background rather than prior art, **not found** means no source located.
+
+Short version: none of the parts is new. The closest relatives are the working-set model, caches, and memory models that raise activation with use and let it fade with time. We did not find the epigenetic picture used for retrieval or agent memory, and we did not find the specific combination of marks kept per kind of work, inherited by new sessions and sub-agents, and closed regions skipped entirely.
+
+| # | work | source | same as this idea | different | verdict |
+|---|---|---|---|---|---|
+| 1 | Working-set model | P. J. Denning, "The working set model for program behavior", Communications of the ACM, 1968 | A running program needs only a small set of pages at a time, defined by recent use; keep that set close | Pages of one process; no profiles kept per kind of work over weeks; no spreading or inheritance | close |
+| 2 | Caches, LRU eviction, prefetching | operating systems and CPU design, textbook material | A hit is fast, a miss is slow, and a miss fills the cache; prefetching loads neighbours | Caches hold copies and evict by age; nothing is closed on purpose; no per-task profiles handed to children | close |
+| 3 | Windows SysMain (formerly SuperFetch) | Windows service | Usage history decides what is preloaded into memory | One global profile per machine; applications, not documents | partial |
+| 4 | Everything (voidtools) | [voidtools FAQ](https://www.voidtools.com/faq/) | Reuse a record that already exists (the NTFS MFT), stay small and in memory, follow the change journal instead of rescanning | Answers "where is it"; one global list; no notion of what the current work needs | partial, the main inspiration for speed |
+| 5 | MemGPT | Packer et al., [arXiv 2310.08560](https://arxiv.org/abs/2310.08560), 2023 | Treat the LLM context like memory in an operating system; page information in and out of a small main context | The agent decides what to page with explicit calls; no per-kind-of-work profiles, no inheritance by sub-agents | close |
+| 6 | Generative Agents | Park et al., [arXiv 2304.03442](https://arxiv.org/abs/2304.03442), 2023 | Memories are scored by recency (exponential decay), importance, and relevance | Scoring happens at query time over the whole memory stream; nothing is closed off | close |
+| 7 | ACT-R base-level activation and spreading activation | J. R. Anderson et al., "An integrated theory of the mind", Psychological Review, 2004 | A memory chunk gets stronger with use, fades with time, and receives activation from related chunks | A model of human memory, not a document system | close, a conceptual twin |
+| 8 | Spreading activation in semantic memory | A. M. Collins and E. F. Loftus, Psychological Review, 1975 | Activation spreads along links between related items | No persistence, decay schedule, or per-task profiles | partial |
+| 9 | A-Mem | [arXiv 2502.12110](https://arxiv.org/abs/2502.12110), 2025 | New memories update attributes of older ones, so the memory changes through use | Updates note content and links; no open and closed state per kind of work | partial |
+| 10 | Metadata tagging and filtering for retrieval (self-querying retrievers, LLM metadata extractors) | [LangChain](https://python.langchain.com/docs/how_to/self_query/), [LlamaIndex](https://developers.llamaindex.ai/python/framework/module_guides/indexing/metadata_extraction/) | Tag every chunk ahead of time, read the question with the same tags, and switch on matching chunks | The tags are fixed when the chunk is indexed; nothing learns from use; every question still searches | partial, the indexing view this note moves away from |
+| 11 | Karpathy, LLM Wiki idea file | [gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f), 2026 | The setting this note starts from | Says reading an index file first works surprisingly well at about a hundred sources and a few hundred pages; as the wiki grows, names qmd as a good search option, or a simple search script | context |
+| 12 | The epigenetic metaphor for retrieval or agent memory | exact-phrase web searches, 2026-10-11 | none found | | not found |
+
+If you know of earlier work that uses this picture or this combination, please open an issue and it will be cited.
